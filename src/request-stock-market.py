@@ -27,15 +27,13 @@ except:
 dataAtual = datetime.now()
 horas = dataAtual.hour
 
-# Mostra o horário de negocição da BM&FBOVESPA
+# Mostra o horário de negocição da BM&FBOVESPA 
 print('')
 if horas >= 10 and horas <= 17:
     print('O pregão negociação da BM&FBOVESPA está aberto')
 else:
-    print('O pregão negociação da BM&FBOVESPA está fechado')
-    print('Os valores exibidos depois desse período se referem ao fechamento')
-
-# Adicionar diferença para final de semana !!!!
+    print('O pregão negociação da BM&FBOVESPA está fechado') 
+    print('Os valores exibidos depois desse período se referem ao fechamento') # Adicionar diferença de dia para final de semana!
 
 # Variável que recebe o código da empresa
 print('')
@@ -69,7 +67,7 @@ if valorAtual() == None or nomeEmpresa() == None:
     pass
 else:
     print(f'Empresa: {nomeEmpresa()}')
-    print(f'Preço atual {codigoEmpresa}: {valorAtual()}')
+    print(f'Preço atual {codigoEmpresa}: {valorAtual()}') # Mudar a formatação de valores para padrão pt-BR!
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
