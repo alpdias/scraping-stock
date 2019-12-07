@@ -3,6 +3,7 @@
 Criado em quinta-feira, 5 de dezembro de 2019
 @Autor: Paulo https://github.com/alpdias
 '''
+
 # Bibliotecas importadas
 import bs4
 import requests
@@ -33,6 +34,8 @@ if horas >= 10 and horas <= 17:
 else:
     print('O pregão negociação da BM&FBOVESPA está fechado')
     print('Os valores exibidos depois desse período se referem ao fechamento')
+
+# Adicionar diferença para final de semana !!!!
 
 # Variável que recebe o código da empresa
 print('')
@@ -69,4 +72,5 @@ else:
     print(f'Preço atual {codigoEmpresa}: {valorAtual()}')
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
+
 print('')
