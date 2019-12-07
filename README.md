@@ -9,8 +9,8 @@ EN-US </br>
 
 To use the necessary libraries for this code execute the commands:
 
-> pip install lxml
-> pip install requests
-> pip install bs4
+> pip install lxml </br>
+> pip install requests </br>
+> pip install bs4 </br>
 
 -------------------------------------------------------------------------------------------------------------------------
