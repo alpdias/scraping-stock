@@ -15,7 +15,7 @@ dataAtual = datetime.now()
 horas = dataAtual.hour
 
 # Função para verificar a conexão com o site
-def verificarConexao():
+def verificarConexao(): # Arrumar retorno
     try:
         url = (f'https://finance.yahoo.com/lookup')
         req = requests.get(url)
@@ -29,7 +29,7 @@ def verificarConexao():
 
 
 # Função para mostra se a negocição da BM&FBOVESPA está aberta ou fechada
-def bovespaON():
+def bovespaON(): # Arrumar retorno
     try:
         if horas >= 10 and horas <= 17: # Adicionar diferença de dia para final de semana!
             print('\033[0;32mBM&FBOVESPA ON\033[m') 
