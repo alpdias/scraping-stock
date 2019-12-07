@@ -47,7 +47,19 @@ def nomeEmpresa():
         nomeEmpresa = soup.find_all('div',{'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
         return nomeEmpresa
     except IndexError:
-        print('Empresa não encontrada, tente novamente!')
+        try:
+            r = requests.get(f'https://finance.yahoo.com/quote/{codigoEmpresa}/')
+            soup = bs4.BeautifulSoup(r.content, 'html.parser')
+            nomeEmpresa = soup.find_all('div',{'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
+            return nomeEmpresa
+        except IndexError:
+            try:
+                r = requests.get(f'https://finance.yahoo.com/quote/^{codigoEmpresa}/') # Adicionar opção personalizada para 'World Indice'
+                soup = bs4.BeautifulSoup(r.content, 'html.parser')
+                nomeEmpresa = soup.find_all('div',{'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
+                return nomeEmpresa
+            except IndexError:
+                print('Empresa não encontrada, tente novamente!')
 
 
 # Função de 'raspagem' da informação do site para obter preço atual da ação
@@ -58,12 +70,24 @@ def valorAtual():
         valor = soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
         return valor
     except IndexError:
-        print('Empresa não encontrada, tente novamente!')
+        try:
+            r = requests.get(f'https://finance.yahoo.com/quote/{codigoEmpresa}/')
+            soup = bs4.BeautifulSoup(r.content, 'html.parser')
+            valor = soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
+            return valor
+        except IndexError:
+            try:
+                r = requests.get(f'https://finance.yahoo.com/quote/^{codigoEmpresa}/') # Adicionar opção personalizada para 'World Indice'
+                soup = bs4.BeautifulSoup(r.content, 'html.parser')
+                valor = soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
+                return valor
+            except  IndexError:
+                print('Empresa não encontrada, tente novamente!')
 
 
 # Exibição das informações requisitadas
 print('')
-if valorAtual() == None or nomeEmpresa() == None:
+if valorAtual() == None or nomeEmpresa() == None: # Adicionar opção personalizada para BR, US e Indice.
     pass
 else:
     print(f'Empresa: {nomeEmpresa()}')
