@@ -35,10 +35,10 @@ def verificarConexao():
 def bovespaON():
     try:
         if horas >= 10 and horas <= 17: # Adicionar diferença de dia para final de semana!
-            bovespa = ('\033[0;32mBM&FBOVESPA\033[m') 
+            bovespa = ('\033[0;32mABERTO\033[m') 
             return bovespa
         else:
-            bovespa = ('\033[0;31mBM&FBOVESPA\033[m') 
+            bovespa = ('\033[0;31mFECHADO\033[m') 
             return bovespa
     except:
         bovespa = ('\033[0;31m#ERRO#\033[m')
@@ -81,11 +81,11 @@ def indiceMercado():
 
 # Variável que recebe o código da empresa ou índice
 print('')
-print('-' * 40)
-print(' ' * 10 + 'REQUEST STOCK MARKET')
-print('-' * 40)
-print(' ' * 2 + f'{verificarConexao()}' + ' ' * 18 + f'{bovespaON()}')
-print('')
+print('-' * 50)
+print(' ' * 12 + 'COTAÇÃO / MERCADO DE AÇÕES')
+print('-' * 50)
+print(' ' * 2 + f'BM&FBOVESPA: {bovespaON()}' + ' ' * 20 + f'{verificarConexao()}')
+print('-' * 50)
 codigo = str(input('Código da empresa ou índice: ')).upper() 
 
 # Exibição das informações requisitadas
@@ -100,6 +100,6 @@ except IndexError:
             indiceMercado()
         except IndexError:
             print('\033[0;31mEmpresa/Índice não encontrada, tente novamente!\033[m')
-print('-' * 40)
+print('-' * 50)
 
 print('')
