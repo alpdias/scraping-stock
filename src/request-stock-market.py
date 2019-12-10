@@ -10,9 +10,9 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 
-# Mostra o horário atual para verificações
+# Mostra o horário e data atual para verificações
 dataAtual = datetime.now()
-horas = dataAtual.hour
+horas = dataAtual.hour # Acrescentar dias da semana para verificação
 
 # Função para verificar a conexão com o site
 def verificarConexao():
@@ -79,16 +79,17 @@ def indiceMercado():
     print(f'{dataAtual}')
 
 
-# Variável que recebe o código da empresa ou índice
+# Exibição das informações requisitadas
 print('')
 print('-' * 50)
 print(' ' * 12 + 'COTAÇÃO / MERCADO DE AÇÕES')
 print('-' * 50)
 print(' ' * 2 + f'BM&FBOVESPA: {bovespaON()}' + ' ' * 20 + f'{verificarConexao()}')
 print('-' * 50)
+
+# Variável que recebe o código da empresa ou índice
 codigo = str(input('Código da empresa ou índice: ')).upper() 
 
-# Exibição das informações requisitadas
 print('')
 try:
     empresaBRL()
