@@ -13,6 +13,8 @@ Para usar as bibliotecas necessárias para esse código, execute os comandos:
 > pip install requests </br>
 > pip install bs4 </br>
 
+Fonte para raspagem de dados: https://finance.yahoo.com/
+
 --------------------------------------------------------------------------------------------------------------------------
 
 # Web scraping with Python
@@ -29,5 +31,7 @@ To use the necessary libraries for this code execute the commands:
 > pip install lxml </br>
 > pip install requests </br>
 > pip install bs4 </br>
+
+Data Scraping Source: https://finance.yahoo.com/
 
 -------------------------------------------------------------------------------------------------------------------------
