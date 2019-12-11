@@ -32,6 +32,6 @@ To use the necessary libraries for this code execute the commands:
 > pip install requests </br>
 > pip install bs4 </br>
 
-Data Scraping Source: https://finance.yahoo.com/
+Data scraping source: https://finance.yahoo.com/
 
 -------------------------------------------------------------------------------------------------------------------------
