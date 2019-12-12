@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 '''
-Criado em quinta-feira, 5 de dezembro de 2019
+Criado em 12/2019
 @Autor: Paulo https://github.com/alpdias
 '''
 
