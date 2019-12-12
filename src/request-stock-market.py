@@ -12,7 +12,8 @@ from datetime import datetime
 
 # Mostra o horário e data atual para verificações
 dataAtual = datetime.now()
-horas = dataAtual.hour # Acrescentar dias da semana para verificação de dias não uteis
+minutos = dataAtual.minute
+horasMinutos = ((dataAtual.hour * 60) + minutos) 
 
 # Função para verificar a conexão com o site
 def verificarConexao():
@@ -34,15 +35,25 @@ def verificarConexao():
 # Função para mostra se a negocição da BM&FBOVESPA está aberta ou fechada
 def bovespaON():
     try:
-        if horas >= 10 and horas <= 17: # Adicionar diferença de dia para final de semana
+        if horasMinutos >= 600 and horasMinutos <= 1020: # Acrescentar dias da semana para verificação de dias não uteis
             bovespa = ('\033[0;32mABERTO\033[m') 
+            return bovespa
+        elif horasMinutos >= 1020 and horasMinutos <= 1080:
+            bovespa = ('\033[0;33mPRÉ-FECHAMENTO\033[m')
             return bovespa
         else:
             bovespa = ('\033[0;31mFECHADO\033[m') 
             return bovespa
     except:
-        bovespa = ('\033[0;31m#ERRO#\033[m')
+        bovespa = ('\033[0;31mERRO\033[m')
         return bovespa
+
+
+# Função para formatar os números de acordo com o padrão pt-BR
+def milharesBR(n=0):
+    import locale
+    locale.setlocale(locale.LC_ALL, "pt-BR")
+    return (locale.format_string("%.2f", n, grouping=True, monetary=True))
 
 
 # Funções de 'raspagem' da informação do site para obter os dados solicitados
@@ -50,9 +61,9 @@ def empresaBRL():
     r = requests.get(f'https://finance.yahoo.com/quote/{codigo}.SA/')
     soup = bs4.BeautifulSoup(r.content, 'html.parser')
     nomeEmpresa = soup.find_all('div',{'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
-    valorEmpresa = soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
+    valorEmpresa = float(soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text)
     print(f'Empresa: {nomeEmpresa}')
-    print(f'Preço atual {codigo}: {valorEmpresa} - Currency in BRL') # Mudar a formatação de valores para padrão pt-BR
+    print(f'Preço atual {codigo}: {milharesBR(valorEmpresa)} - Currency in BRL')
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
@@ -61,9 +72,9 @@ def empresaUSD():
     r = requests.get(f'https://finance.yahoo.com/quote/{codigo}/')
     soup = bs4.BeautifulSoup(r.content, 'html.parser')
     nomeEmpresa = soup.find_all('div',{'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
-    valorEmpresa = soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
+    valorEmpresa = float(soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text)
     print(f'Empresa: {nomeEmpresa}')
-    print(f'Preço atual {codigo}: {valorEmpresa} - Currency in USD') # Mudar a formatação de valores para padrão pt-BR
+    print(f'Preço atual {codigo}: {milharesBR(valorEmpresa)} - Currency in USD') 
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
@@ -74,7 +85,7 @@ def indiceMercado():
     nomeIndice = soup.find_all('div',{'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text.split()
     valorIndice = soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
     print(f'Índice: {nomeIndice[2]}') 
-    print(f'Valor atual {codigo}: {valorIndice}') # Mudar a formatação de valores para padrão pt-BR!
+    print(f'Valor atual {codigo}: {valorIndice}')
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
@@ -82,9 +93,9 @@ def indiceMercado():
 # Exibição das informações requisitadas
 print('')
 print('-' * 50)
-print(' ' * 12 + 'COTAÇÃO / MERCADO DE AÇÕES')
+print(' ' * 2 + 'COTAÇÃO / MERCADO DE AÇÕES' + ' ' * 14 + f'{verificarConexao()}')
 print('-' * 50)
-print(' ' * 2 + f'BM&FBOVESPA: {bovespaON()}' + ' ' * 20 + f'{verificarConexao()}')
+print(' ' * 2 + f'BM&FBOVESPA: {bovespaON()}')
 print('-' * 50)
 
 # Variável que recebe o código da empresa ou índice
