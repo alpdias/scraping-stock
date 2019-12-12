@@ -13,7 +13,7 @@ Para usar as bibliotecas necessárias para esse código, execute os comandos:
 > pip install requests </br>
 > pip install bs4 </br>
 
-Fonte para raspagem de dados: https://finance.yahoo.com/
+Fonte utilizada para a raspagem dos dados: https://finance.yahoo.com/
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -32,6 +32,6 @@ To use the necessary libraries for this code execute the commands:
 > pip install requests </br>
 > pip install bs4 </br>
 
-Data scraping source: https://finance.yahoo.com/
+Source used for data scraping: https://finance.yahoo.com/
 
 -------------------------------------------------------------------------------------------------------------------------
