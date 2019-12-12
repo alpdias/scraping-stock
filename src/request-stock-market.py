@@ -12,7 +12,7 @@ from datetime import datetime
 
 # Mostra o horário e data atual para verificações
 dataAtual = datetime.now()
-horas = dataAtual.hour # Acrescentar dias da semana para verificação
+horas = dataAtual.hour # Acrescentar dias da semana para verificação de dias não uteis
 
 # Função para verificar a conexão com o site
 def verificarConexao():
@@ -27,14 +27,14 @@ def verificarConexao():
             fonte = ('\033[0;31mOFFLINE\033[m')
             return fonte
     except:
-        fonte = ('\033[0;31m#ERRO#\033[m')
+        fonte = ('\033[0;31mERRO\033[m')
         return fonte
 
 
 # Função para mostra se a negocição da BM&FBOVESPA está aberta ou fechada
 def bovespaON():
     try:
-        if horas >= 10 and horas <= 17: # Adicionar diferença de dia para final de semana!
+        if horas >= 10 and horas <= 17: # Adicionar diferença de dia para final de semana
             bovespa = ('\033[0;32mABERTO\033[m') 
             return bovespa
         else:
@@ -52,7 +52,7 @@ def empresaBRL():
     nomeEmpresa = soup.find_all('div',{'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
     valorEmpresa = soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
     print(f'Empresa: {nomeEmpresa}')
-    print(f'Preço atual {codigo}: {valorEmpresa} - Currency in BRL') # Mudar a formatação de valores para padrão pt-BR!
+    print(f'Preço atual {codigo}: {valorEmpresa} - Currency in BRL') # Mudar a formatação de valores para padrão pt-BR
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
@@ -63,7 +63,7 @@ def empresaUSD():
     nomeEmpresa = soup.find_all('div',{'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
     valorEmpresa = soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
     print(f'Empresa: {nomeEmpresa}')
-    print(f'Preço atual {codigo}: {valorEmpresa} - Currency in USD') # Mudar a formatação de valores para padrão pt-BR!
+    print(f'Preço atual {codigo}: {valorEmpresa} - Currency in USD') # Mudar a formatação de valores para padrão pt-BR
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
