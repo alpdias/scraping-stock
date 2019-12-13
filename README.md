@@ -7,6 +7,8 @@ Microsoft VSCode 1.38.1 </br>
 Códificação: -&lowast;- coding: utf-8 -&lowast;- </br>
 PT-BR </br>
 
+![](https://github.com/alpdias/web-scraping-python/blob/master/img/stock-market.png)
+
 Para usar as bibliotecas necessárias para esse código, execute os comandos:
 
 > pip install lxml </br>
@@ -25,6 +27,8 @@ Python 3.7.4 </br>
 Microsoft VSCode 1.38.1 </br>
 Códificação: -&lowast;- coding: utf-8 -&lowast;- </br>
 PT-BR </br>
+
+![](https://github.com/alpdias/web-scraping-python/blob/master/img/stock-market.png)
 
 To use the necessary libraries for this code execute the commands:
 
