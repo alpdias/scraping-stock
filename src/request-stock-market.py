@@ -34,18 +34,24 @@ def verificarConexao():
 
 # Função para mostra se a negocição da BM&FBOVESPA está aberta ou fechada
 def bovespaON():
-    try:
-        if horasMinutos >= 600 and horasMinutos <= 1020: # Acrescentar dias da semana para verificação de dias não uteis
-            bovespa = ('\033[0;32mABERTO\033[m') 
+    import datetime
+    diaSemana = datetime.datetime.today().weekday()
+    if diaSemana in [0, 1, 2, 3, 4]:
+        try:
+            if horasMinutos >= 600 and horasMinutos <= 1020:
+                bovespa = ('\033[0;32mABERTO\033[m') 
+                return bovespa
+            elif horasMinutos >= 1020 and horasMinutos <= 1080:
+                bovespa = ('\033[0;33mPRÉ-FECHAMENTO\033[m')
+                return bovespa
+            else:
+                bovespa = ('\033[0;31mFECHADO\033[m') 
+                return bovespa
+        except:
+            bovespa = ('\033[0;31mERRO\033[m')
             return bovespa
-        elif horasMinutos >= 1020 and horasMinutos <= 1080:
-            bovespa = ('\033[0;33mPRÉ-FECHAMENTO\033[m')
-            return bovespa
-        else:
-            bovespa = ('\033[0;31mFECHADO\033[m') 
-            return bovespa
-    except:
-        bovespa = ('\033[0;31mERRO\033[m')
+    else:
+        bovespa = ('\033[0;31mFECHADO\033[m') 
         return bovespa
 
 
