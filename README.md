@@ -2,8 +2,8 @@
 
 Raspagem da web usando python para obter dados do mercado de ações
 
-Python 3.7.4 </br>
-Microsoft VSCode 1.38.1 </br>
+Python 3.8.0 </br>
+Microsoft VSCode 1.41.1 </br>
 Códificação: -&lowast;- coding: utf-8 -&lowast;- </br>
 PT-BR </br>
 
@@ -23,8 +23,8 @@ Fonte utilizada para a raspagem dos dados: https://finance.yahoo.com/
 
 Web scraping using python to get stock market data
 
-Python 3.7.4 </br>
-Microsoft VSCode 1.38.1 </br>
+Python 3.8.0 </br>
+Microsoft VSCode 1.41.1 </br>
 Códificação: -&lowast;- coding: utf-8 -&lowast;- </br>
 PT-BR </br>
 
