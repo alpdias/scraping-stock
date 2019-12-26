@@ -5,7 +5,7 @@ Raspagem da web usando python para obter dados do mercado de ações
 Python 3.8.0 </br>
 Microsoft VSCode 1.41.1 </br>
 Códificação: -&lowast;- coding: utf-8 -&lowast;- </br>
-PT-BR </br>
+pt-BR </br>
 
 ![](https://github.com/alpdias/web-scraping-python/blob/master/img/stock-market.png)
 
@@ -25,8 +25,8 @@ Web scraping using python to get stock market data
 
 Python 3.8.0 </br>
 Microsoft VSCode 1.41.1 </br>
-Códificação: -&lowast;- coding: utf-8 -&lowast;- </br>
-PT-BR </br>
+Coding: -&lowast;- coding: utf-8 -&lowast;- </br>
+pt-BR </br>
 
 ![](https://github.com/alpdias/web-scraping-python/blob/master/img/stock-market.png)
 
