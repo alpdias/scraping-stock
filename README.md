@@ -7,7 +7,7 @@ Microsoft VSCode 1.41.1 </br>
 Códificação: -&lowast;- coding: utf-8 -&lowast;- </br>
 pt-BR </br>
 
-![](https://github.com/alpdias/web-scraping-python/blob/master/img/stock-market.png)
+![](https://github.com/alpdias/web-scraping-python/blob/master/img/cotacao-mercado.png)
 
 Para usar as bibliotecas necessárias para esse código, execute os comandos:
 
@@ -28,7 +28,7 @@ Microsoft VSCode 1.41.1 </br>
 Coding: -&lowast;- coding: utf-8 -&lowast;- </br>
 pt-BR </br>
 
-![](https://github.com/alpdias/web-scraping-python/blob/master/img/stock-market.png)
+![](https://github.com/alpdias/web-scraping-python/blob/master/img/cotacao-mercado.png)
 
 To use the necessary libraries for this code execute the commands:
 
