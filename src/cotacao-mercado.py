@@ -56,7 +56,7 @@ def bovespaON():
 
 
 # Função para formatar os números de acordo com o padrão pt-BR
-def milharesBR(n=0):
+def tratamento(n=0):
     import locale
     locale.setlocale(locale.LC_ALL, "pt-BR")
     return (locale.format_string("%.2f", n, grouping=True, monetary=True))
@@ -69,7 +69,7 @@ def empresaBRL():
     nomeEmpresa = soup.find_all('div',{'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
     valorEmpresa = float(soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text)
     print(f'Empresa: {nomeEmpresa}')
-    print(f'Preço atual {codigo}: {milharesBR(valorEmpresa)} - Currency in BRL')
+    print(f'Preço atual {codigo}: {tratamento(valorEmpresa)} - Valor em BRL')
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
@@ -80,7 +80,7 @@ def empresaUSD():
     nomeEmpresa = soup.find_all('div',{'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
     valorEmpresa = float(soup.find_all('div',{'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text)
     print(f'Empresa: {nomeEmpresa}')
-    print(f'Preço atual {codigo}: {milharesBR(valorEmpresa)} - Currency in USD') 
+    print(f'Preço atual {codigo}: {tratamento(valorEmpresa)} - Valor em USD') 
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
@@ -98,11 +98,9 @@ def indiceMercado():
 
 # Exibição das informações requisitadas
 print('')
-print('-' * 50)
-print(' ' * 2 + 'COTAÇÃO / MERCADO DE AÇÕES' + ' ' * 14 + f'{verificarConexao()}')
-print('-' * 50)
-print(' ' * 2 + f'BM&FBOVESPA: {bovespaON()}')
-print('-' * 50)
+print(f'COTAÇÃO / MERCADO DE AÇÕES -- {verificarConexao()}')
+print(f'BM&FBOVESPA: {bovespaON()}')
+print('')
 
 # Variável que recebe o código da empresa ou índice
 codigo = str(input('Código da empresa ou índice: ')).upper() 
@@ -117,7 +115,6 @@ except IndexError:
         try:
             indiceMercado()
         except IndexError:
-            print('\033[0;31mEmpresa/Índice não encontrada, tente novamente!\033[m')
-print('-' * 50)
+            print('\033[0;31mERRO!\033[m Empresa/Índice não encontrada, tente novamente.')
 
 print('')
