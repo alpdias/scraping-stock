@@ -1,6 +1,6 @@
 # Raspagem da web usando Python
 
-Raspagem da web usando python para obter dados do mercado de ações
+Raspagem da web usando python para obter dados do mercado de ações.
 
 Python 3.8.0 </br>
 Microsoft VSCode 1.41.1 </br>
@@ -21,7 +21,7 @@ Fonte utilizada para a raspagem dos dados: https://finance.yahoo.com/
 
 # Web scraping with Python
 
-Web scraping using python to get stock market data
+Web scraping using python to get stock market data.
 
 Python 3.8.0 </br>
 Microsoft VSCode 1.41.1 </br>
