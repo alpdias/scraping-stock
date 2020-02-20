@@ -9,7 +9,7 @@ pt-BR </br>
 
 ![](https://github.com/alpdias/web-scraping-python/blob/master/img/cotacao-mercado.png)
 
-Para usar as bibliotecas necessárias para esse código, execute os comandos:
+<strong>Módulos Python</strong>
 
 > pip install lxml </br>
 > pip install requests </br>
@@ -30,7 +30,7 @@ pt-BR </br>
 
 ![](https://github.com/alpdias/web-scraping-python/blob/master/img/cotacao-mercado.png)
 
-To use the necessary libraries for this code execute the commands:
+<strong>Python modules</strong>
 
 > pip install lxml </br>
 > pip install requests </br>
