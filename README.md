@@ -15,6 +15,8 @@ pt-BR </br>
 > pip install requests </br>
 > pip install bs4 </br>
 
+Andamento -> <strong>95%</strong>
+
 Fonte utilizada para a raspagem dos dados: https://finance.yahoo.com/
 
 --------------------------------------------------------------------------------------------------------------------------
@@ -35,6 +37,8 @@ pt-BR </br>
 > pip install lxml </br>
 > pip install requests </br>
 > pip install bs4 </br>
+
+Progress -> <strong>95%</strong>
 
 Source used for data scraping: https://finance.yahoo.com/
 
