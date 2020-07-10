@@ -70,16 +70,9 @@ def bovespaON():
 def tratamento(n=0):
     import locale
     
-    locale.setlocale(locale.LC_ALL, "pt_BR.UTF-8")
-    return (locale.format_string("%.2f", n, grouping=True))
+    locale.setlocale(locale.LC_MONETARY, "pt_BR.UTF-8") # Para Windows utilize --> "pt-BR"
+    return locale.currency(n, grouping=True)
 
-
-'''
-Para Windows utilize -->
-
-locale.setlocale(locale.LC_ALL, "pt-BR")
-locale.format_string("%.2f", n, grouping=True, monetary=True)
-'''
 
 # Funções de 'raspagem' da informação do site para obter os dados solicitados
 def empresaBRL():
