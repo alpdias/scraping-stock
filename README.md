@@ -2,7 +2,7 @@
 
 Raspagem da web usando python para obter dados do mercado de ações.
 
-Andamento -> <strong>95%</strong>
+Andamento -> <strong>100%</strong>
 
 Python 3.8.0 </br>
 Microsoft VSCode 1.41.1 </br>
@@ -25,7 +25,7 @@ Fonte utilizada para a raspagem dos dados: https://finance.yahoo.com/
 
 Web scraping using python to get stock market data.
 
-Progress -> <strong>95%</strong>
+Progress -> <strong>100%</strong>
 
 Python 3.8.0 </br>
 Microsoft VSCode 1.41.1 </br>
