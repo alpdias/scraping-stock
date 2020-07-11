@@ -80,14 +80,10 @@ def empresaBRL():
     soup = bs4.BeautifulSoup(r.content, 'html.parser')
     nomeEmpresa = soup.find_all('div', {'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
     valorEmpresa = soup.find_all('div', {'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
-
-    try:
-        valorEmpresa = tratamento(float(valorEmpresa), "pt_BR.UTF-8")
-    except ValueError:
-        valorEmpresa = valorEmpresa
+    valorEmpresa = float(valorEmpresa.replace(',',''))
     
     print(f'Empresa: {nomeEmpresa}')
-    print(f'Preço atual {codigo}: {valorEmpresa} - Valor em BRL')
+    print(f'Preço atual {codigo}: {tratamento(valorEmpresa, "pt_BR.UTF-8")} - Valor em BRL')
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
@@ -97,14 +93,10 @@ def empresaUSD():
     soup = bs4.BeautifulSoup(r.content, 'html.parser')
     nomeEmpresa = soup.find_all('div', {'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
     valorEmpresa = soup.find_all('div', {'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
-
-    try:
-        valorEmpresa = tratamento(float(valorEmpresa), "en_US.UTF-8")
-    except ValueError:
-        valorEmpresa = valorEmpresa
+    valorEmpresa = float(valorEmpresa.replace(',',''))
     
     print(f'Empresa: {nomeEmpresa}')
-    print(f'Preço atual {codigo}: {valorEmpresa} - Valor em USD') 
+    print(f'Preço atual {codigo}: {tratamento(valorEmpresa, "en_US.UTF-8")} - Valor em USD') 
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
@@ -114,14 +106,10 @@ def indiceMercado():
     soup = bs4.BeautifulSoup(r.content, 'html.parser')
     nomeIndice = soup.find_all('div', {'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text.split()
     valorIndice = soup.find_all('div', {'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
-
-    try:
-        valorIndice = tratamento(float(valorIndice), "pt_BR.UTF-8")
-    except ValueError:
-        valorIndice = valorIndice
+    valorIndice = float(valorIndice.replace(',',''))
     
     print(f'Índice: {nomeIndice[2]}') 
-    print(f'Valor atual {codigo}: {valorIndice}')
+    print(f'Valor atual {codigo}: {tratamento(valorIndice)}')
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
 
