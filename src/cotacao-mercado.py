@@ -66,7 +66,7 @@ def bovespaON():
         return bovespa
 
 
-# Função para formatar os números de acordo com o padrão pt-BR
+# Função para formatar os números de acordo com o padrão local selecionado
 def tratamento(n=0, formato=''):
     import locale
     
@@ -107,7 +107,7 @@ def indiceMercado():
     nomeIndice = soup.find_all('div', {'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text.split()
     valorIndice = soup.find_all('div', {'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
     valorIndice = float(valorIndice.replace(',','')) # remover a virgula para poder converter em numerico
-    valorIndice = tratamento(valorIndice).replace('R$','') # remover o simbolo de 'R$' valor me pontos
+    valorIndice = tratamento(valorIndice).replace('R$','') # remover o simbolo de 'R$' valor em pontos
     
     print(f'Índice: {nomeIndice[2]}') 
     print(f'Valor atual {codigo}: {valorIndice}')
