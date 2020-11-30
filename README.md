@@ -5,7 +5,6 @@ Raspagem da web usando python para obter dados do mercado de ações.
 Andamento -> <strong>100%</strong>
 
 Python 3.8.0 </br>
-Microsoft VSCode 1.41.1 </br>
 Codificação: -&lowast;- coding: utf-8 -&lowast;- </br>
 pt-BR </br>
 
@@ -28,7 +27,6 @@ Web scraping using python to get stock market data.
 Progress -> <strong>100%</strong>
 
 Python 3.8.0 </br>
-Microsoft VSCode 1.41.1 </br>
 Coding: -&lowast;- coding: utf-8 -&lowast;- </br>
 pt-BR </br>
 
