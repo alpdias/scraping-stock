@@ -52,7 +52,7 @@ def bovespaON():
     -> Funçao para mostra se a negocição da BM&FBOVESPA esta aberta ou fechada
     """
     
-    diaSemana = datetime.datetime.today().weekday()
+    diaSemana = datetime.today().weekday()
     
     if diaSemana in [0, 1, 2, 3, 4]:  
         try:
