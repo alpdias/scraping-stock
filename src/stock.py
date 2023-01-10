@@ -98,11 +98,12 @@ def empresaBRL():
     """
     -> Funçao para 'raspagem' da informação do site para obter os dados solicitados
     """
-    
-    r = requests.get(f'https://finance.yahoo.com/quote/{codigo}.SA/')
+
+    cabecalho = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'} # adição de cabecalho na requisicao, sem isso o site não aceita mais a o download de dados
+    r = requests.get(f'https://finance.yahoo.com/quote/{codigo}.SA/', headers=cabecalho)
     soup = bs4.BeautifulSoup(r.content, 'html.parser')
-    nomeEmpresa = soup.find_all('div', {'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
-    valorEmpresa = soup.find_all('div', {'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
+    nomeEmpresa = soup.find('h1', {'class': 'D(ib) Fz(18px)'}).text
+    valorEmpresa = soup.find('fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'}).text
     valorEmpresa = float(valorEmpresa.replace(',','')) # remover a virgula para poder converter em numerico
     
     print(f'Empresa: {nomeEmpresa}')
@@ -116,11 +117,12 @@ def empresaUSD():
     """
     -> Funçao para 'raspagem' da informação do site para obter os dados solicitados
     """
-          
-    r = requests.get(f'https://finance.yahoo.com/quote/{codigo}/')
+
+    cabecalho = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'} # adição de cabecalho na requisicao, sem isso o site não aceita mais a o download de dados
+    r = requests.get(f'https://finance.yahoo.com/quote/{codigo}/', headers=cabecalho)
     soup = bs4.BeautifulSoup(r.content, 'html.parser')
-    nomeEmpresa = soup.find_all('div', {'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text
-    valorEmpresa = soup.find_all('div', {'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
+    nomeEmpresa = soup.find('h1', {'class': 'D(ib) Fz(18px)'}).text
+    valorEmpresa = soup.find('fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'}).text
     valorEmpresa = float(valorEmpresa.replace(',','')) # remover a virgula para poder converter em numerico
     
     print(f'Empresa: {nomeEmpresa}')
@@ -134,19 +136,19 @@ def indiceMercado():
     """
     -> Funçao para 'raspagem' da informação do site para obter os dados solicitados
     """
-          
-    r = requests.get(f'https://finance.yahoo.com/quote/^{codigo}/')
+
+    cabecalho = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'} # adição de cabecalho na requisicao, sem isso o site não aceita mais a o download de dados   
+    r = requests.get(f'https://finance.yahoo.com/quote/^{codigo}/', headers=cabecalho)
     soup = bs4.BeautifulSoup(r.content, 'html.parser')
-    nomeIndice = soup.find_all('div', {'class': 'D(ib) Mt(-5px) Mend(20px) Maw(56%)--tab768 Maw(52%) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)'})[0].find('h1').text.split()
-    valorIndice = soup.find_all('div', {'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find('span').text
+    nomeIndice = soup.find('h1', {'class': 'D(ib) Fz(18px)'}).text
+    valorIndice = soup.find('fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'}).text
     valorIndice = float(valorIndice.replace(',','')) # remover a virgula para poder converter em numerico
-    valorIndice = tratamento(valorIndice).replace('R$','') # remover o simbolo de 'R$' valor em pontos
-    
-    print(f'Índice: {nomeIndice[2]}') 
+    valorIndice = tratamento(valorIndice).replace('€','') # remover o simbolo de '€' valor em pontos
+
+    print(f'Índice: {nomeIndice}') 
     print(f'Valor atual {codigo}: {valorIndice}')
     print(f'Fonte: Yahoo Finance')
     print(f'{dataAtual}')
-
 
 print('')
           
@@ -162,15 +164,15 @@ print('')
 try:
     empresaBRL()
     
-except IndexError:
+except (IndexError, AttributeError):
     try:
         empresaUSD()
         
-    except IndexError:
+    except (IndexError, AttributeError):
         try:
             indiceMercado()
             
-        except IndexError:
+        except (IndexError, AttributeError):
             print('\033[0;31mERRO!\033[m Empresa/Índice não encontrada, tente novamente!')
 
 print('')
